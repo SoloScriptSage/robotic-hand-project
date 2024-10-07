@@ -110,7 +110,7 @@ Below is a quick demonstration of the robotic hand in action. (Replace this plac
 ## 📸 Photos
 
 ### 🛠️ Sensors Testing
-![Project Assembly](images/project_assembly.gif)
+![Project Assembly](images/sensors_testing.gif)
 
 ### 🧤 Bending Testing
 ![Bending Testing](images/bending_testing.gif)

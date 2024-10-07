@@ -110,13 +110,13 @@ Below is a quick demonstration of the robotic hand in action. (Replace this plac
 ## 📸 Photos
 
 ### 🛠️ Sensors Testing
-![Project Assembly](images/project_assembly.jpg)
+![Project Assembly](images/project_assembly.gif)
 
 ### 🧤 Bending Testing
-![Bending Testing](images/bending_testing.jpg)
+![Bending Testing](images/bending_testing.gif)
 
 ### 🖨️ 3D Model of the Robotic Hand
-![3D Model](images/3d_model.jpg)
+![3D Model](images/3d_model.gif)
 
 ---
 

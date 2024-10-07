@@ -47,7 +47,7 @@ The project aims to create a responsive robotic hand that mirrors the flexion of
 ## 🗺️ Schematics
 
 ### 📡 Transmitter
-![Transmitter Schematic](images/transmitter_schematic.jpg)
+![Transmitter Schematic](images/transmitter_schematic.png)
 - The transmitter board reads data from five flex sensors connected to analog input pins.
 - **Pins Used**:
   - **A1 - A5**: Flex sensors

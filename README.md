@@ -101,9 +101,9 @@ This repository contains the following files:
 
 ## 🧪 Testing
 
-Below is a quick demonstration of the robotic hand in action. (Replace this placeholder with a GIF of the hand being controlled by flex sensor inputs.)
+Below is a quick demonstration of the robotic hand in action.
 
-![Robotic Hand Demo](images/robotic_hand_demo.gif)
+![Robotic Hand Demo](images/3d__model_testing.gif)
 
 ---
 
@@ -114,9 +114,6 @@ Below is a quick demonstration of the robotic hand in action. (Replace this plac
 
 ### 🧤 Bending Testing
 ![Bending Testing](images/bending_testing.gif)
-
-### 🔥 Results
-![3D Model](images/3d__model_testing.gif)
 
 ---
 

@@ -115,8 +115,8 @@ Below is a quick demonstration of the robotic hand in action. (Replace this plac
 ### 🧤 Bending Testing
 ![Bending Testing](images/bending_testing.gif)
 
-### 🖨️ 3D Model of the Robotic Hand
-![3D Model](images/3d_model.gif)
+### 🔥 Results
+![3D Model](images/3d__model_testing.gif)
 
 ---
 

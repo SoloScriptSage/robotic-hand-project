@@ -1,0 +1,21 @@
+# Arduino build artifacts
+build/
+*.elf
+*.hex
+*.bin
+*.map
+*.eep
+
+# Arduino IDE
+.arduino15/
+*.bak
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini

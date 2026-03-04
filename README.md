@@ -22,41 +22,47 @@ Originally developed as an open-source prosthetic research platform.
 
 ---
 
+## 📁 Repository Structure
+
+```
+robotic-hand-project/
+│
+├── firmware/
+│   ├── transmitter/        ← glove Arduino code
+│   ├── receiver/           ← hand Arduino code
+│   ├── test_sensors/       ← flex sensor calibration helper
+│   └── servo_test/         ← servo sweep test
+│
+├── hardware/
+│   ├── schematics/         ← wiring diagrams
+│   ├── pcb/                ← PCB files
+│   ├── mechanical/
+│   │   └── robotic-hand-stls/  ← 3D print files
+│   ├── assembly-guides/    ← step by step assembly
+│   ├── datasheets/         ← component datasheets
+│   └── BOM.md              ← full bill of materials
+│
+├── docs/
+│   ├── calibration.md      ← flex sensor calibration guide
+│   └── troubleshooting.md  ← common issues and fixes
+│
+├── images/                 ← photos and demo gifs
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+---
+
 ## 🛠️ Materials
 
-| Component | Quantity | Link |
-|---|---|---|
-| Arduino Uno or Mega | 2 | [Amazon](https://a.co/d/7hcBaU4) |
-| NRF24L01+ wireless module | 2 | [Amazon](https://a.co/d/2pLEXYt) |
-| Flex sensors | 5 | [Amazon](https://a.co/d/0HHEU9b) |
-| MG996R servo motors | 5 | [Amazon](https://a.co/d/9qywIPb) |
-| 10k Ohm resistors | 5 | [Amazon](https://a.co/d/1EXjHHf) |
-| LiPo 7.4V / NiMH 7.2V battery | 1 | [Amazon](https://a.co/d/2NYQ9gW) |
-| Fish wire (for finger tendons) | — | [Amazon](https://a.co/d/iEQPEsA) |
-| Glue gun | 1 | [Amazon](https://a.co/d/2u9a7ZK) |
-| Jumper wires | — | [Amazon](https://a.co/d/2u9a7ZK) |
+Full bill of materials with component links and prices → [`hardware/BOM.md`](hardware/BOM.md)
 
 ---
 
 ## 🗺️ Schematics
 
-### Transmitter (Glove)
-
-![Transmitter Schematic](images/transmitter_schematic.png)
-
-| Pin | Connection |
-|---|---|
-| A1 - A5 | Flex sensors |
-| 9, 10 | NRF24L01 CE, CSN |
-
-### Receiver (Robotic Hand)
-
-![Receiver Schematic](images/receiver_schematic.jpg)
-
-| Pin | Connection |
-|---|---|
-| 2 - 6 | Servo motors |
-| 9, 10 | NRF24L01 CE, CSN |
+Wiring diagrams for both transmitter and receiver → [`hardware/schematics/`](hardware/schematics/)
 
 > ⚠️ Power the NRF24L01 modules from the **3.3V pin only** — they are not 5V tolerant.
 
@@ -64,7 +70,7 @@ Originally developed as an open-source prosthetic research platform.
 
 ## 🖨️ 3D Model
 
-The hand structure is sourced from [Viral Science](https://www.viralsciencecreativity.com/post/arduino-flex-sensor-controlled-robot-hand). Print files are available in the [`hardware/`](hardware/) folder.
+The hand structure is sourced from [Viral Science](https://www.viralsciencecreativity.com/post/arduino-flex-sensor-controlled-robot-hand). Print files are available in [`hardware/mechanical/robotic-hand-stls/`](hardware/mechanical/robotic-hand-stls/).
 
 Print settings:
 - Material: PLA or PETG
@@ -86,28 +92,20 @@ In Arduino IDE go to **Sketch → Include Library → Manage Libraries** and ins
 - `Servo` (built-in)
 
 ### 3. Assemble the hardware
-- Print and assemble the 3D hand following the Viral Science instructions
-- Attach servos to fingers and run fish wire as tendons
-- Wire flex sensors to the glove according to the transmitter schematic
-- Wire servos to the receiver board according to the receiver schematic
+- Print and assemble the 3D hand following the guides in [`hardware/assembly-guides/`](hardware/assembly-guides/)
+- Wire flex sensors to the glove according to the schematics
+- Wire servos to the receiver board according to the schematics
 
 ### 4. Calibrate the flex sensors
-Flash [`firmware/test_sensors/test_sensors.ino`](firmware/test_sensors/test_sensors.ino) to the transmitter Arduino. Open Serial Monitor at **9600 baud**. For each finger:
-1. Hold the finger **flat** — record the value
-2. Bend the finger **fully** — record the value
-
-Update `FLEX_MIN` and `FLEX_MAX` in `transmitter.ino` with your recorded values:
-```cpp
-const int FLEX_MIN[5] = {535, 535, 535, 535, 535}; // flat
-const int FLEX_MAX[5] = {680, 680, 680, 680, 710}; // fully bent
-```
+Follow the step-by-step guide → [`docs/calibration.md`](docs/calibration.md)
 
 ### 5. Flash the firmware
 - Flash [`firmware/transmitter/transmitter.ino`](firmware/transmitter/transmitter.ino) to the **glove Arduino**
 - Flash [`firmware/receiver/receiver.ino`](firmware/receiver/receiver.ino) to the **hand Arduino**
 
-### 6. Test servos
-Before full assembly, flash [`firmware/servo_test/servo_test.ino`](firmware/servo_test/servo_test.ino) to the receiver Arduino to verify all 5 servos sweep correctly.
+### 6. Test
+- Flash [`firmware/servo_test/servo_test.ino`](firmware/servo_test/servo_test.ino) to verify all servos sweep correctly
+- Power both Arduinos and open Serial Monitor — you should see sensor values on the transmitter and matching received values on the receiver
 
 ---
 
@@ -127,10 +125,12 @@ Before full assembly, flash [`firmware/servo_test/servo_test.ino`](firmware/serv
 ![Sensor Testing](images/sensors_testing.gif)
 ![Bending Testing](images/bending_testing.gif)
 
-1. Power both Arduinos
-2. Open Serial Monitor on the transmitter — you should see `Sensors: 90 90 90 ...`
-3. Open Serial Monitor on the receiver — you should see `Received: 90 90 90 ...`
-4. Flex your fingers — values should change and servos should respond
+---
+
+## 📖 Docs
+
+- [Calibration Guide](docs/calibration.md)
+- [Troubleshooting](docs/troubleshooting.md)
 
 ---
 

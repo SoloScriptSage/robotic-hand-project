@@ -17,7 +17,7 @@ void setup() {
 
     radio.begin();
     radio.setAutoAck(true);
-    radio.setRetries(0, 15);
+    radio.setRetries(3, 15);
     radio.enableAckPayload();
     radio.setPayloadSize(sizeof(gotByte));
     radio.openReadingPipe(1, address[0]);

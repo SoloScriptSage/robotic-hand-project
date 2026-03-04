@@ -7,8 +7,11 @@ RF24 radio(9, 10);
 const byte address[][6] = {"1Node", "2Node", "3Node", "4Node", "5Node", "6Node"};
 
 const int FLEX_PINS[5] = {A1, A2, A3, A4, A5};
-const int FLEX_MIN[5]  = {535, 535, 535, 535, 535};
-const int FLEX_MAX[5]  = {680, 680, 680, 680, 710};
+
+// TODO: Replace with real values from test_sensors.ino
+// Bend each finger flat and fully bent, record the Serial Monitor values
+const int FLEX_MIN[5] = {535, 535, 535, 535, 535}; // flat (unflexed)
+const int FLEX_MAX[5] = {680, 680, 680, 680, 710}; // fully bent
 
 int msg[5];
 
@@ -17,7 +20,7 @@ void setup() {
 
     radio.begin();
     radio.setAutoAck(true);
-    radio.setRetries(0, 15);
+    radio.setRetries(3, 15);
     radio.enableAckPayload();
     radio.setPayloadSize(sizeof(msg));
     radio.openWritingPipe(address[0]);

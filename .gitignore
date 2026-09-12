@@ -19,3 +19,9 @@ build/
 # Windows
 Thumbs.db
 desktop.ini
+
+*-backups/
+fp-info-cache
+*.kicad_prl
+*.bak
+*~
